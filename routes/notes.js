@@ -1,3 +1,4 @@
+const { json } = require('express');
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -14,6 +15,20 @@ router.get('/', function(req, res, next) {
       res.send(JSON.parse(data));
   });
 });
+
+/* GET  Note by id. */
+router.get('/:id', function(req, res, next) {
+    fs.readFile(dataPath, (err,data) =>{
+        if(err) {
+            throw err;
+        }
+        var id = req.params.id;
+        var notesdata = JSON.parse(data);
+
+        res.send(notesdata[id]);
+        //TODO: Hantera att endast giltiga ID funkar
+    });
+  });
 
 //POST a new Note
 router.post('/', function(req, res, next) {
