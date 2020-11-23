@@ -10,6 +10,55 @@ ROUTES      VERB    BESKRIVNING
 /notes      POST    Skapar en ny anteckning
 /notes/id   PUT     Uppdaterar befintlig anteckning med angivet id
 
+Nu har vi alla tre use cases på plats i vårt API, happy path!
+Vad bör nu vara nästa steg?
+Möjliga nästa steg:
+-stabilisera API med felhantering och refactoring för bättre underhåll
+-ta fram Postman-tester, kan de automatiseras?
+--enhetstester, unit testing. dvs man testar en liten del i taget med kod
+-slutför alla önskade funktioner enligt CRUD
+-fundera på en bra felhantering, ex error objekt?
+
+-vi tar fram ett enkelt GUI för att konsumera API:et
+-frontend HTML, CSS, JS, XHR
+
+-vi tar fram ett backend alternativ till JSON, med en databaslösning
+-lösningen ska vara enkel att skifta mellan JSON och DB
+
+Om vi är ett Team, skulle vi kunna göra alla tre uppgifterna samtidigt.
+-vad är i så fall kritiskt/viktigt att ha fungerande för ett bra teamarbete?
+-API anropen!! Namngivningen och tydligt vilken typ av data som returneras.
+--INTERFACE, dvs vad kommer att returneras och hur görs anropen
+---innehållet är mindre viktigt, det kan FAKE:as.
+*dvs det som API behöver ha klart är ÖVERENSKOMMELSEN över namn och data*
+Ett API erbjuder ett INTERFACE, betrakta det som ett KONTRAKT, som INTE ändras
+-endast tillägg kan göras
+-själva implementationen kan givetvis ändras bara inte namn och data påverkas
+
+TDD - Test Driven Development
+-Skriv testet FÖRST, ja före all annan kod!!
+--hjälper oss att formulera VAD som ska göras, utan att vi fastnar i HUR (kod)
+---förväntningar på resultatet
+
+Unit Testing, enhetstester
+-enkla, små atomära tester utan andra beroenden
+-syftet är att verkligen kunna lita på varje liten beståndsdel vi utvecklar
+
+Hjälper oss att tänka på problemet och formulera lösningen, innan vi kodar
+
+Kallas även för Red/Green-tester.
+-därför att om alla tester skrivs innan koden, kommer de alltid faila (red)
+--innan vi hunnit skriva kod som gör att det lyckas (green)
+
+Tänk att det ni manuellt gör i Postman, nu blir ett program som kan köras automatiskt
+
+Regressionstester - dvs återtester, hjälper oss att se till att befintligt kod inte
+råkar skapa krascher när vi skriver ny kod.
+
+Skapar säkerhet och trygghet för oss som utvecklare
+-vi vågar testa mer nya ideer när vi känner oss trygga
+
+
 Beskriv även vad som ska ske om något inte går bra.
 Errorhantering?
 Ex returnera data som säger "error" och en "beskrivning"
